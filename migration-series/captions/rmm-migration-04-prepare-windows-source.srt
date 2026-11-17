@@ -1,0 +1,441 @@
+1
+00:00:05,750 --> 00:00:12,639
+What I'm gonna do next, is to show you
+the same thing, but for a Windows machine.
+
+2
+00:00:13,229 --> 00:00:26,399
+So, remember, I mentioned, Windows doesn't
+come with an SSH, particular agent.
+
+3
+00:00:26,659 --> 00:00:35,739
+We need to deploy the RackWare, SSH agent. So
+hopefully you can see, my screen here, the…
+
+4
+00:00:35,859 --> 00:00:37,819
+The Windows instance.
+
+5
+00:00:37,959 --> 00:00:46,028
+So this window instance, which I believe it's a Windows
+2022 or something, it is also running in Google.
+
+6
+00:00:46,159 --> 00:00:49,949
+Okay, so here's the IP, it's the 37.
+
+7
+00:00:50,269 --> 00:00:58,129
+So, here it is, I'm connected. So, and how do we install this SSH?
+
+8
+00:00:58,649 --> 00:01:00,328
+Agent.
+
+9
+00:01:00,709 --> 00:01:10,859
+So the SSH agent itself lives inside the RackWare
+instance, or the RackWare software, which, in our case,
+
+10
+00:01:10,859 --> 00:01:13,469
+is running in Oracle Cloud.
+
+11
+00:01:13,609 --> 00:01:24,779
+So, as you can see, the IP from my instance in
+Oracle Cloud, it is this one. It's the 49.64.
+
+12
+00:01:25,019 --> 00:01:33,988
+So, it is this… it is this one I'm using to download.
+Basically, I just need to point the source host
+
+13
+00:01:34,419 --> 00:01:40,108
+To download this particular MSI. Which is our SSH agent.
+
+14
+00:01:40,399 --> 00:01:48,548
+Of course, I have done this before. I
+have already, downloaded this particular.
+
+15
+00:01:48,779 --> 00:01:52,849
+Binary, it's already here in the download folder.
+
+16
+00:01:52,849 --> 00:02:00,324
+But as you can see, you don't need to download
+anything outside your premises if you want.
+
+17
+00:02:00,324 --> 00:02:05,889
+So, as RackWare is always deployed
+on the premises of the customer.
+
+18
+00:02:06,209 --> 00:02:15,422
+You can download this from a local IP or public IP, it
+doesn't matter. So don't get attached with public IPs.
+
+19
+00:02:15,422 --> 00:02:21,508
+This can be running in a local host
+itself, right, inside your premises.
+
+20
+00:02:21,509 --> 00:02:26,298
+So, we're gonna do the same thing. We're just
+gonna change for your IP to the internal IP.
+
+21
+00:02:26,589 --> 00:02:30,578
+And download from this folder, and this MSI.
+
+22
+00:02:31,839 --> 00:02:39,739
+So, the next thing we need to do is basically
+hit install on this particular SSH agent.
+
+23
+00:02:40,439 --> 00:02:47,839
+So, it's easy as next, next, and finish.
+So, we're gonna do in program files.
+
+24
+00:02:48,009 --> 00:02:50,818
+Here is the very important part.
+
+25
+00:02:51,349 --> 00:02:57,069
+So, we need to specify what is the username we're gonna use.
+
+26
+00:02:57,599 --> 00:03:01,308
+For RackWare to connect and perform the migrations.
+
+27
+00:03:01,569 --> 00:03:09,536
+So, by default, we use the user system, which
+is, by default, every single Windows VM has it,
+
+28
+00:03:09,536 --> 00:03:15,789
+and it has the right privileges already
+we need to perform the migration.
+
+29
+00:03:16,149 --> 00:03:22,919
+Can you use a different user? Of course. You can
+use a local user or even an Active Directory user.
+
+30
+00:03:23,339 --> 00:03:27,618
+But here I'm gonna use the system using, which is the recommended.
+
+31
+00:03:28,209 --> 00:03:33,101
+If you're using the username system, we don't require a password.
+
+32
+00:03:33,101 --> 00:03:37,768
+Because the user system doesn't have one or does not need one.
+
+33
+00:03:38,279 --> 00:03:48,769
+The SSH port, so, I have come across many customers
+running, another SSH system in a Windows host.
+
+34
+00:03:49,209 --> 00:03:53,372
+By any… any reason, here is the… how you change the port.
+
+35
+00:03:53,372 --> 00:03:58,192
+So, Rodolfo, I have an SSH running already, can I change the port?
+
+36
+00:03:58,192 --> 00:04:04,181
+Yes, when you deploy the SSH, you can just
+come here and do 2222, or 22, whatever.
+
+37
+00:04:04,181 --> 00:04:07,979
+Or even, I don't know, a random port, we don't care.
+
+38
+00:04:08,069 --> 00:04:12,019
+So, I'm gonna use the standard 22 port.
+
+39
+00:04:12,339 --> 00:04:16,814
+And the next thing, which is the most important part.
+
+40
+00:04:16,814 --> 00:04:23,569
+It is the public key from the RackWare
+appliance, which, as I showed you before.
+
+41
+00:04:24,869 --> 00:04:28,108
+Here is our public key.
+
+42
+00:04:28,539 --> 00:04:31,449
+What I need to do is basically copy.
+
+43
+00:04:31,599 --> 00:04:35,069
+This particular… public key here.
+
+44
+00:04:35,369 --> 00:04:42,069
+What I'm gonna do to avoid any issues,
+I'm just gonna paste this into a notepad.
+
+45
+00:04:42,209 --> 00:04:48,550
+Just to avoid… Problems with, like, this one, the… or… this one.
+
+46
+00:04:48,550 --> 00:04:54,449
+So, I'm gonna hit next, next, and we're gonna deploy the MSI.
+
+47
+00:04:55,739 --> 00:05:00,800
+So, you're gonna see, we're gonna generate a couple of keys here,
+
+48
+00:05:00,800 --> 00:05:05,238
+which is the public and private keys for this SSH engine.
+
+49
+00:05:05,769 --> 00:05:11,308
+And that's basically it. We now have the SSH agent running.
+
+50
+00:05:11,769 --> 00:05:13,588
+In this Windows host.
+
+51
+00:05:14,179 --> 00:05:17,549
+And we have a couple of things more, which is…
+
+52
+00:05:17,999 --> 00:05:21,678
+Very important for Windows hosts.
+
+53
+00:05:22,069 --> 00:05:28,398
+First thing… Open the port 22 on the Windows firewall.
+
+54
+00:05:28,939 --> 00:05:31,823
+Okay, so I have done this already.
+
+55
+00:05:31,823 --> 00:05:39,119
+Of course, Windows doesn't come with SSH,
+so the port 22 is always blocked by default.
+
+56
+00:05:39,119 --> 00:05:46,499
+You need to create an SSH rule to allow the
+connection, which I have already done here.
+
+57
+00:05:47,199 --> 00:05:53,729
+Of course, SSH port 22 must be, you know.
+
+58
+00:05:54,109 --> 00:05:57,958
+Have the proper particular firewall rule.
+
+59
+00:05:58,399 --> 00:06:04,128
+From, your firewall, your border firewall
+here, to allow this connection, of course.
+
+60
+00:06:04,128 --> 00:06:09,039
+So, this is already done because I'm
+using the internet to perform this.
+
+61
+00:06:09,279 --> 00:06:12,019
+So I can establish the SSH connection.
+
+62
+00:06:12,589 --> 00:06:18,269
+And one very important thing, guys, to Windows hosts.
+
+63
+00:06:18,788 --> 00:06:28,859
+Antivirus. Windows usually comes
+with, Defender. As a, as a firewall.
+
+64
+00:06:29,538 --> 00:06:31,619
+I think it's Defender. Yeah.
+
+65
+00:06:32,619 --> 00:06:41,219
+We have, in our documentation, everything
+needed to whitelist, the exclusions.
+
+66
+00:06:41,559 --> 00:06:43,159
+In Defender.
+
+67
+00:06:46,299 --> 00:06:47,259
+In the security.
+
+68
+00:06:48,469 --> 00:06:52,089
+So, we have this, particular
+
+69
+00:06:52,839 --> 00:07:01,599
+Exclusions you guys need to do in order for… for
+the copy to not be intercepted by the antivirus.
+
+70
+00:07:01,939 --> 00:07:10,538
+Here, I just disabled the antivirus to make it easy,
+for me. Of course, in production is not the case.
+
+71
+00:07:10,669 --> 00:07:19,539
+So, every single antivirus has its own way to
+perform, a whitelist. So, in our documentation.
+
+72
+00:07:19,839 --> 00:07:27,148
+We have a few examples, but if you're running
+a very specific antivirus, you need to
+
+73
+00:07:27,379 --> 00:07:31,379
+To do a little bit of research, understand how do they perform.
+
+74
+00:07:31,489 --> 00:07:40,009
+The whitelisting. We have everything listed there,
+what's the paths, the binaries you must whitelist.
+
+75
+00:07:40,649 --> 00:07:45,169
+In order to… This to work properly.
+
+76
+00:07:45,379 --> 00:07:53,648
+Is it a requirement? Will… will
+the migration not work? Yes and no.
+
+77
+00:07:53,939 --> 00:08:00,388
+Basically, the firewall won't block
+anything, usually at the beginning.
+
+78
+00:08:00,569 --> 00:08:09,404
+But the firewall, while we are doing the copy, is
+gonna intercept and make the copy very, very slow.
+
+79
+00:08:09,404 --> 00:08:16,384
+So 99% when we are troubleshooting, speed
+problems, a machine take a long time.
+
+80
+00:08:16,384 --> 00:08:19,918
+It is the antivirus blocking, something.
+
+81
+00:08:20,099 --> 00:08:28,187
+So, please pay attention to antivirus and
+also, security, EDRs and point protections.
+
+82
+00:08:28,187 --> 00:08:35,608
+So, most of the times, they also block.
+We do have the whitelisting for those.
+
+83
+00:08:35,859 --> 00:08:44,714
+Because all the migrations we perform are from the operating
+system. We're going to inspect things in the disks,
+
+84
+00:08:44,714 --> 00:08:51,909
+in the registry, so we need to have the proper
+permissions, and the antivirus must allow us
+
+85
+00:08:52,129 --> 00:08:55,799
+To connect and get this information.
+
+86
+00:08:57,809 --> 00:09:05,489
+That being said, this Windows, host is
+ready, so how do I know it is ready?
+
+87
+00:09:05,929 --> 00:09:13,050
+What I'm gonna do is basically
+perform, the same thing, I did before.
+
+88
+00:09:13,050 --> 00:09:17,799
+What I'm gonna do, I'm gonna test
+the connection to this Windows host.
+
+89
+00:09:17,959 --> 00:09:19,789
+This is the IP.
+
+90
+00:09:20,369 --> 00:09:28,158
+I'm gonna do simply an SSH to the user system.
+Remember, this is the user I have used there.
+
+91
+00:09:28,849 --> 00:09:31,098
+To the IP. So…
+
+92
+00:09:31,359 --> 00:09:38,559
+Yes, to the private key. So, there we
+go. I'm inside of the Windows host.
+
+93
+00:09:38,719 --> 00:09:42,548
+Connected as the user system over SSH.
+
+94
+00:09:43,669 --> 00:09:44,539
+So…
+
+95
+00:09:44,669 --> 00:09:49,658
+That's basically what I need to perform. So, at this point,
+
+96
+00:09:49,658 --> 00:09:59,150
+RackWare is able to establish an SSH connection to a to
+the Windows and the Linux host we are planning to migrate.
+
+97
+00:09:59,150 --> 00:10:05,889
+Question: if Windows already has OpenSSH
+installed, will that work for RackWare?
+
+98
+00:10:05,889 --> 00:10:14,050
+No – it must be the RackWare SSH agent. We don't
+work with an OpenSSH that's already installed.
+

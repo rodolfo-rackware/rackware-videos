@@ -1,0 +1,352 @@
+1
+00:00:05,750 --> 00:00:11,499
+The RackWare software, basically, we
+can do 3 things in the same product.
+
+2
+00:00:11,499 --> 00:00:17,558
+RMM, which is the RackWare Management
+Module, is just one piece of software.
+
+3
+00:00:17,659 --> 00:00:25,775
+To do, cloud migration, not just cloud. These guys,
+you're gonna see, migration for operating systems,
+
+4
+00:00:25,775 --> 00:00:32,140
+disaster recover for the same operating
+systems, and also we perform assessment.
+
+5
+00:00:32,140 --> 00:00:35,950
+Which I'm gonna show you next, as well in the demo.
+
+6
+00:00:35,950 --> 00:00:46,889
+So, just moving one slide, the RackWare software,
+which we're gonna see it today for… for migration.
+
+7
+00:00:47,159 --> 00:00:50,567
+We basically are our any-to-any solution.
+
+8
+00:00:50,567 --> 00:00:56,967
+We can migrate to basically any hypervisor
+to any other cloud, or vice versa.
+
+9
+00:00:56,967 --> 00:01:01,538
+We do support physical to virtual, virtual to physical.
+
+10
+00:01:01,999 --> 00:01:04,499
+And why we do this?
+
+11
+00:01:04,639 --> 00:01:16,477
+And how we do is basically our support matrix is not
+hypervisors. Our support matrix is basically operating systems.
+
+12
+00:01:16,477 --> 00:01:24,539
+So, as you can see, we support from
+Windows 2008 R2 to the latest Windows 2025.
+
+13
+00:01:24,559 --> 00:01:33,739
+And most of the enterprise Linux
+distros. From Red Hat 5.2 to the 10.
+
+14
+00:01:33,769 --> 00:01:38,889
+Ubuntu, Rocky Linux, SUSE, CentOS, you name it.
+
+15
+00:01:39,019 --> 00:01:48,099
+So, if you're running any of these operating systems,
+we can basically migrate them from one side to another.
+
+16
+00:01:48,519 --> 00:01:58,390
+If you have a particular use case, to migrate, for example,
+to, from VMware, which is a very big thing nowadays,
+
+17
+00:01:58,390 --> 00:02:06,939
+customers wanting to leave VMware to any other
+particular, virtualization platform, like, KVM, or
+
+18
+00:02:06,939 --> 00:02:13,928
+Oracle, Linux, OLVM, we can do it. If
+the customer wants to migrate from.
+
+19
+00:02:14,669 --> 00:02:23,348
+What's the name? VMware to IBM Cloud, Oracle
+Linux, etc. We can also perform these migrations.
+
+20
+00:02:24,109 --> 00:02:29,188
+So, just to give you, a bit of…
+
+21
+00:02:29,549 --> 00:02:36,519
+Understanding on how RackWare works,
+and what's the architecture needed.
+
+22
+00:02:36,669 --> 00:02:39,969
+For you guys to perform a migration.
+
+23
+00:02:40,139 --> 00:02:44,886
+So, in this scenario here, a very simple drawing. Not…
+
+24
+00:02:44,886 --> 00:02:50,600
+this was not done by AI, by the way, so I like seeing this stuff.
+
+25
+00:02:50,600 --> 00:02:59,478
+We do have here, for example, a source environment
+protected by a firewall. Let's say this is VMware.
+
+26
+00:02:59,899 --> 00:03:09,809
+We do have, Windows and Linux workloads. And we
+want to migrate, for example, to, Oracle Cloud, OCI.
+
+27
+00:03:10,269 --> 00:03:18,539
+So, what are the prerequisites, or the requirements?
+What do we need in order to migrate these workloads?
+
+28
+00:03:18,779 --> 00:03:22,499
+The first thing, of course, is to deploy the RackWare software.
+
+29
+00:03:22,809 --> 00:03:31,599
+Why I say software? Because RackWare, it is obviously
+a software and can be deployed in any Linux instance.
+
+30
+00:03:31,599 --> 00:03:39,238
+It's not an appliance, it's not an OVA, you can
+basically download the software from our FTP.
+
+31
+00:03:39,599 --> 00:03:51,808
+And install it anywhere you want. So, of course, we do
+have, the marketplace images and instances in, for example.
+
+32
+00:03:51,809 --> 00:04:01,229
+Oracle, IBM, Google to make it easy to deploy. But for
+example, if a customer wants to migrate from, let's say.
+
+33
+00:04:01,529 --> 00:04:09,205
+VMware to Hyper-V. They can easily deploy
+a Linux VM inside a Hyper-V cluster,
+
+34
+00:04:09,205 --> 00:04:17,569
+install the RackWare software inside this
+Linux instance, and perform the migrations.
+
+35
+00:04:17,659 --> 00:04:22,801
+So even if we are talking about physical
+to physical, there is no problem.
+
+36
+00:04:22,801 --> 00:04:29,680
+You just need the RackWare software running inside
+of any Linux VM to orchestrate these migrations,
+
+37
+00:04:29,680 --> 00:04:31,278
+so then we can perform.
+
+38
+00:04:31,529 --> 00:04:36,739
+So, what do we need in order to migrate
+workloads from one site to another?
+
+39
+00:04:36,929 --> 00:04:46,919
+The first thing is connectivity. The RackWare instance,
+or the RackWare software, needs To reach every single.
+
+40
+00:04:46,939 --> 00:04:51,117
+Windows and Linux workload we're going to migrate. Why?
+
+41
+00:04:51,117 --> 00:04:55,979
+Because we perform the migrations at the operating system level.
+
+42
+00:04:55,999 --> 00:04:59,201
+So, no, we don't connect to vCenter.
+
+43
+00:04:59,201 --> 00:05:07,649
+We don't connect to the, to the source cloud to,
+get information from the operating system. No.
+
+44
+00:05:07,659 --> 00:05:13,388
+We need to go and connect via SSH to the very
+
+45
+00:05:13,389 --> 00:05:19,073
+Instances that we're gonna migrate.
+I'm gonna show you next how we do this,
+
+46
+00:05:19,073 --> 00:05:25,363
+but it's simply establishing an SSH connection
+using a public key from the RackWare
+
+47
+00:05:25,363 --> 00:05:28,698
+instance to these Windows or Linux machines.
+
+48
+00:05:28,849 --> 00:05:33,739
+So if you perform, an SSH without a
+password before, it is the same thing.
+
+49
+00:05:33,739 --> 00:05:41,007
+It's just establishing the public key from the RackWare
+instance to the authorized keys in the Linux instance,
+
+50
+00:05:41,007 --> 00:05:44,179
+and boom, you are ready to start the migrations.
+
+51
+00:05:44,349 --> 00:05:52,652
+Windows, the same thing, of course, as you guys are
+technical, you know Windows doesn't come with SSH natively.
+
+52
+00:05:52,652 --> 00:05:59,458
+We need to deploy our SSH agent in these Windows
+machines. And the same thing that follows.
+
+53
+00:05:59,458 --> 00:06:03,198
+We need the public key from the RackWare instance.
+
+54
+00:06:03,199 --> 00:06:05,179
+To be deployed on this Linux.
+
+55
+00:06:05,399 --> 00:06:12,598
+Sorry, in this Windows instance, and we can start the
+configuration to migrate from one site to another.
+
+56
+00:06:13,029 --> 00:06:26,078
+So, of course, to access the RMM GUI, the front end, we're
+gonna need TCP 443 and 80 to establish, the GUI access.
+
+57
+00:06:26,989 --> 00:06:33,268
+And then, to migrate, for example, to
+Oracle Cloud or to Google Cloud, RackWare
+
+58
+00:06:33,569 --> 00:06:37,888
+Must have the ability to connect to the cloud APIs itself.
+
+59
+00:06:38,139 --> 00:06:44,409
+Because we have a very important feature, a very
+good feature, which is called auto-provision.
+
+60
+00:06:44,619 --> 00:06:48,488
+So, as we connect into the source hosts.
+
+61
+00:06:48,759 --> 00:06:55,231
+We do the assessment first, which means we
+understand everything that's running on that VM.
+
+62
+00:06:55,231 --> 00:07:00,068
+We know the amount of CPU, disks,
+memory, software is running on it.
+
+63
+00:07:00,319 --> 00:07:03,869
+And RackWare can basically use that information
+
+64
+00:07:04,089 --> 00:07:08,559
+And go to the cloud itself, for example, OCI.
+
+65
+00:07:08,699 --> 00:07:13,839
+And provision an instance automatically
+for us using this information.
+
+66
+00:07:13,839 --> 00:07:20,888
+So we're going to create an instance with the
+same shape or the same resources as in the source.
+
+67
+00:07:21,249 --> 00:07:24,259
+Does it mean it must be the same, shape?
+
+68
+00:07:24,259 --> 00:07:31,935
+No, of course, we have the ability to change or tweak
+the instance if you want more or less resources.
+
+69
+00:07:31,935 --> 00:07:40,288
+We can tell RackWare, look, I want this shape, or this
+shape with more memory, or less CPU, or more disks, etc.
+
+70
+00:07:40,429 --> 00:07:48,472
+RackWare has even the ability to shrink file systems.
+So, for example, if you have a Windows machine,
+
+71
+00:07:48,472 --> 00:07:55,719
+if someone made a mistake to deploy the C drive
+with 1TB disk, and you're only using 100GB.
+
+72
+00:07:56,079 --> 00:07:59,659
+We can easily configure in RackWare to
+
+73
+00:07:59,769 --> 00:08:06,117
+Deploy the new VM in OCI, for example, with,
+I don't know, 500 gigabytes in the disks,
+
+74
+00:08:06,117 --> 00:08:10,842
+and change the file system for only 500 gigabytes, or even less.
+
+75
+00:08:10,842 --> 00:08:14,828
+So we can reshape the image to perform this migration.
+
+76
+00:08:15,069 --> 00:08:15,750
+All right.
+

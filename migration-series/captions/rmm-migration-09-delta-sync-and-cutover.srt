@@ -1,0 +1,293 @@
+1
+00:00:05,750 --> 00:00:07,368
+Let me show you something now.
+
+2
+00:00:07,699 --> 00:00:14,739
+Of course, this is a version of the VM. You
+did migrate, but, the host is still running.
+
+3
+00:00:14,929 --> 00:00:19,383
+So, let's say, I want to do… to do the cutover.
+
+4
+00:00:19,383 --> 00:00:27,059
+I want to say, look, I want to, move this
+VM completely from GCP to Oracle Cloud.
+
+5
+00:00:27,339 --> 00:00:30,999
+What they need to do. What we would recommend is.
+
+6
+00:00:31,279 --> 00:00:32,909
+You need to stop.
+
+7
+00:00:33,259 --> 00:00:42,459
+Every single application on the source host for a few
+minutes, for example, you can shut down your HR system.
+
+8
+00:00:43,489 --> 00:00:49,319
+And then you can do another thing. So,
+let me show you, what is the delta sync.
+
+9
+00:00:50,149 --> 00:00:52,809
+So, here… Hold on.
+
+10
+00:00:53,499 --> 00:00:56,189
+This is the target host.
+
+11
+00:00:56,889 --> 00:01:00,808
+I'm connected on the host in OCI now, the new one.
+
+12
+00:01:01,629 --> 00:01:06,769
+Look, this… this is the files.
+
+13
+00:01:06,919 --> 00:01:09,409
+I have in the target host.
+
+14
+00:01:09,659 --> 00:01:13,828
+As you can see, Rodolfo23, a lot of old files.
+
+15
+00:01:14,169 --> 00:01:19,508
+What I'm gonna do, I'm gonna connect into the source host itself.
+
+16
+00:01:21,379 --> 00:01:28,109
+Here's the files I have. I'm gonna do touch, Webinar.
+
+17
+00:01:28,849 --> 00:01:30,619
+File one.
+
+18
+00:01:31,369 --> 00:01:38,999
+File X… I'll just give a bunch of… random number.
+
+19
+00:01:39,599 --> 00:01:41,079
+Files.
+
+20
+00:01:41,339 --> 00:01:46,788
+So, as you can see, this is the source
+host. I have these four new files.
+
+21
+00:01:47,779 --> 00:01:50,069
+Of course, the destination
+
+22
+00:01:50,809 --> 00:01:58,712
+In Oracle Cloud doesn't have it. What do I need to do
+to sync these VMs again for… for me to perform this…
+
+23
+00:01:58,712 --> 00:02:06,839
+this migration or this synchronization, right, in order
+to have this… the last delta, to one side to another?
+
+24
+00:02:07,489 --> 00:02:15,858
+Remember the wave? So, in the wave here, I just
+need to basically perform another synchronization.
+
+25
+00:02:15,979 --> 00:02:19,358
+So pay attention to the the time it took.
+
+26
+00:02:19,589 --> 00:02:22,979
+To migrate this whole VM, including
+
+27
+00:02:23,089 --> 00:02:25,548
+2 minutes to create the VM.
+
+28
+00:02:25,789 --> 00:02:28,229
+In Oracle Cloud. Okay.
+
+29
+00:02:28,769 --> 00:02:33,598
+When I do a new synchronization, RackWare already knows.
+
+30
+00:02:34,199 --> 00:02:42,928
+We have a target VM in the destination, because we have
+deployed them. Here it is, the IP address, the name.
+
+31
+00:02:43,209 --> 00:02:49,502
+Basically, we're going to skip the auto-provision
+phase. We don't need it. The VM already exists.
+
+32
+00:02:49,502 --> 00:02:53,719
+We're just going to connect into the target and apply the deltas.
+
+33
+00:02:53,919 --> 00:02:54,988
+Of course.
+
+34
+00:02:55,129 --> 00:03:01,563
+The VM itself, which lives in Oracle
+Cloud, is gonna be rebooted, which it was.
+
+35
+00:03:01,563 --> 00:03:07,019
+We don't need that host, it's just
+there to receive the migrations.
+
+36
+00:03:07,819 --> 00:03:15,259
+And then, once it's finished, see, we are already
+syncing the data, we didn't have the auto-provision.
+
+37
+00:03:15,799 --> 00:03:18,208
+So, if I run that comment here…
+
+38
+00:03:18,589 --> 00:03:22,508
+You're gonna see… oh, it's almost done, the sync, anyway.
+
+39
+00:03:23,179 --> 00:03:29,809
+So, it's gonna take a few seconds to synchronize,
+because we just had, like, 4 very small files.
+
+40
+00:03:31,079 --> 00:03:35,798
+And, We're gonna be able to see that. Okay.
+
+41
+00:03:37,589 --> 00:03:40,309
+So, we are preparing the host now.
+
+42
+00:03:41,599 --> 00:03:42,979
+That's gonna boot.
+
+43
+00:03:43,250 --> 00:03:46,759
+The VM in the source:
+
+44
+00:03:47,089 --> 00:03:54,128
+If it has 8 CPUs, X amount of disks and VMware, memory.
+
+45
+00:03:54,219 --> 00:03:58,074
+We recommend the same in a destination. Why?
+
+46
+00:03:58,074 --> 00:04:04,644
+The synchronization is done using the
+file system and the operating system.
+
+47
+00:04:04,644 --> 00:04:11,478
+So if you have a VM with 32 CPUs, 32
+gigs of RAM, and a very small one in OCI.
+
+48
+00:04:11,619 --> 00:04:20,258
+Guess what? Your sync times are gonna be terrible, because
+the file system and the operating system on the destination
+
+49
+00:04:20,429 --> 00:04:26,075
+Won't have enough resources to receive
+the copy. So, can it be slower?
+
+50
+00:04:26,075 --> 00:04:33,979
+Yes, at some degree, but we recommend it to have
+it, with the same resources to speed up the sync.
+
+51
+00:04:34,539 --> 00:04:36,650
+So, because you must have the resources.
+
+52
+00:04:36,650 --> 00:04:41,138
+Okay, so the synchronization is done.
+
+53
+00:04:42,079 --> 00:04:49,938
+If I connect now, to the same host, into the
+destination, which is the same Rocky Linux.
+
+54
+00:04:51,029 --> 00:04:53,619
+And I do an LS.
+
+55
+00:04:53,739 --> 00:04:59,498
+Ta-da! Here is my files, which I just did the deltas.
+
+56
+00:04:59,929 --> 00:05:04,078
+Why I know it's a delta? Because it took
+
+57
+00:05:04,739 --> 00:05:13,598
+1 minute and 53 seconds to synchronize the
+same host, which took the beginning around,
+
+58
+00:05:13,729 --> 00:05:15,909
+8 minutes.
+
+59
+00:05:16,019 --> 00:05:20,612
+So, this is the power of the delta syncs for migrations.
+
+60
+00:05:20,612 --> 00:05:27,748
+For example, even if you're synchronizing,
+for example, 1TB, 2TB machines, it will take
+
+61
+00:05:27,929 --> 00:05:32,088
+A longer… Time on the first one.
+
+62
+00:05:32,239 --> 00:05:36,539
+But this… The subsequent ones will take
+
+63
+00:05:36,689 --> 00:05:40,839
+Probably minutes. Because we are just copying the deltas.
+
+64
+00:05:41,059 --> 00:05:44,638
+So, that's why we plan, for example, for a migration.
+
+65
+00:05:44,638 --> 00:05:51,121
+We keep synchronizing the hosts every single day
+for 1, 2, 3 days, a week, 2 weeks, you name it.
+
+66
+00:05:51,121 --> 00:05:56,929
+And once the customer is ready, you shut
+down the application, perform your last sync.
+
+67
+00:05:57,069 --> 00:06:03,250
+And your host is good to go and start
+operating in the target environment.
+

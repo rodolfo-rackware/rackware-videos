@@ -1,0 +1,219 @@
+1
+00:00:05,750 --> 00:00:11,608
+Alright, so let me see… yeah, that's the migration.
+
+2
+00:00:12,439 --> 00:00:14,379
+It's happening there.
+
+3
+00:00:15,659 --> 00:00:18,369
+Yeah, the Windows is auto-provisioning.
+
+4
+00:00:18,809 --> 00:00:20,789
+Let me just check.
+
+5
+00:00:20,979 --> 00:00:27,109
+My Windows… sorry, my, Linux?
+
+6
+00:00:29,219 --> 00:00:30,589
+It's migrating.
+
+7
+00:00:34,279 --> 00:00:39,719
+Yeah, syncing the data. So, just to
+show you something a bit more extra.
+
+8
+00:00:40,399 --> 00:00:45,939
+RackWare also has, of course, a command line, right, if you like.
+
+9
+00:00:47,869 --> 00:00:52,819
+We can see a lot of data from the CLI as well. For example.
+
+10
+00:00:53,149 --> 00:00:56,489
+rw job show.
+
+11
+00:00:56,599 --> 00:00:59,938
+I can use, for example, the job ID from here.
+
+12
+00:01:00,889 --> 00:01:06,508
+To see, for example, what's going on
+on this synchronization, for example.
+
+13
+00:01:07,089 --> 00:01:16,199
+What's the progress. What's the… the speed? And the
+ETA. How long it's gonna take to finish this copy?
+
+14
+00:01:16,199 --> 00:01:24,059
+No, it's gonna take 2 minutes. So, of course,
+you can monitor this, using Watch, or etc.
+
+15
+00:01:24,229 --> 00:01:28,469
+So it's a very good comment to use, the rw job show.
+
+16
+00:01:28,649 --> 00:01:34,215
+So you can see more detailed information
+on the synchronization itself.
+
+17
+00:01:34,215 --> 00:01:40,409
+So, it says it's auto-provisioning, here's
+all the information about this sync.
+
+18
+00:01:40,569 --> 00:01:48,769
+So, if we run the same thing in,
+using the particular Windows host.
+
+19
+00:01:50,059 --> 00:01:53,459
+It's also auto-provisioning. This is the job ID.
+
+20
+00:01:53,459 --> 00:01:58,559
+Windows takes longer to auto-provision,
+of course, because it's Windows.
+
+21
+00:01:59,249 --> 00:02:07,251
+But if I run the command here, we're not going to see much
+because auto-provision doesn't show much because we are not
+
+22
+00:02:07,251 --> 00:02:09,489
+in the synchronization phase yet.
+
+23
+00:02:09,719 --> 00:02:13,309
+But once we get, we're gonna be there.
+
+24
+00:02:13,639 --> 00:02:19,558
+So, I just want to wait until this particular…
+
+25
+00:02:19,919 --> 00:02:22,339
+Linux finished, just to show you
+
+26
+00:02:22,479 --> 00:02:25,801
+That it is the same host, in fact.
+
+27
+00:02:25,801 --> 00:02:34,399
+And I'm gonna show you something very interesting
+to show you the delta synchronization.
+
+28
+00:02:34,769 --> 00:02:40,489
+So, let me just… Okay, this is…
+
+29
+00:02:41,139 --> 00:02:47,078
+This is the source host. It's live, it's
+running, it's… It's here, there is nothing…
+
+30
+00:02:47,349 --> 00:02:50,828
+Preventing me to use the source host.
+
+31
+00:02:51,989 --> 00:02:56,219
+So, RackWare is finishing up the…
+
+32
+00:02:56,839 --> 00:03:02,279
+The migration is configuring everything
+on the destination VM to run.
+
+33
+00:03:03,689 --> 00:03:08,149
+And I'm gonna do a side-by-side comparison, just to show you.
+
+34
+00:03:10,759 --> 00:03:13,250
+Okay, it's rebooting now, the host.
+
+35
+00:03:13,250 --> 00:03:15,459
+Meanwhile, that's the IP.
+
+36
+00:03:16,249 --> 00:03:21,849
+From search the target new Linux.
+
+37
+00:03:24,039 --> 00:03:29,739
+And… Okay, release… All right, that's done.
+
+38
+00:03:30,049 --> 00:03:37,668
+That particular Linux VM from Google Cloud,
+it's now up and running in Oracle Cloud.
+
+39
+00:03:38,809 --> 00:03:46,909
+How can I prove that to you? Okay, so here, it's my
+RackWare instance, okay, which is running in OCI,
+
+40
+00:03:46,909 --> 00:03:50,919
+which is the one I'm running the commands against.
+
+41
+00:03:51,229 --> 00:03:59,150
+So, remember, when we established the connection
+to the source host, we had, a user we have created.
+
+42
+00:03:59,150 --> 00:04:07,468
+The RackWare user. So, you all agree, if it's the same
+instance, I must be able to connect using the same
+
+43
+00:04:07,739 --> 00:04:17,029
+User. So, I can easily do, for example, SSH RackWare at the IP,
+
+44
+00:04:18,029 --> 00:04:23,468
+This new instance is using in OCI, which is 10.0.0.05.
+
+45
+00:04:23,669 --> 00:04:27,359
+So, if everything works… I can.
+
+46
+00:04:28,209 --> 00:04:30,389
+Establish a connection.
+
+47
+00:04:30,499 --> 00:04:37,889
+So, you can see, here's the RackWare at
+Rocky Linux from GCP, which is basically
+
+48
+00:04:38,689 --> 00:04:44,171
+The same host name. Different IPs, of
+course, because they are in different places.
+
+49
+00:04:44,171 --> 00:04:51,041
+There are original IPs in this network, now we are
+in a different network, because we changed locations.
+
+50
+00:04:51,041 --> 00:04:54,550
+But it's the same operating system with the same data.
+

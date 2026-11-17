@@ -1,0 +1,368 @@
+1
+00:00:05,750 --> 00:00:12,378
+Moving forward, then, with the migrations,
+let's start with the prerequisites. So…
+
+2
+00:00:12,699 --> 00:00:19,548
+What I'm gonna do, I'm gonna show you here what
+I have for, for the… for the migration today.
+
+3
+00:00:19,929 --> 00:00:24,409
+I have a Linux VM running here in Google Cloud.
+
+4
+00:00:24,959 --> 00:00:35,128
+Just for the sake of simplicity, I'm using public IPs
+for the migration. So, as you remember from the diagram.
+
+5
+00:00:35,129 --> 00:00:40,149
+We just need to establish Layer 3 connectivity SSH port 22.
+
+6
+00:00:40,149 --> 00:00:49,509
+It doesn't matter if you are doing this via a WAN, a
+LAN, using IPSec, Tunnel, FastConnect, it doesn't matter.
+
+7
+00:00:49,589 --> 00:00:54,089
+As long as the RackWare software can establish an SSH.
+
+8
+00:00:54,259 --> 00:01:02,619
+To the source VM, it's all that matters.
+So, I'm using here public IPs to be easy.
+
+9
+00:01:02,650 --> 00:01:09,389
+I do have already… this is already set up, just for
+the sake of it. I'm gonna show you what we need.
+
+10
+00:01:09,679 --> 00:01:20,048
+So the first thing, I did here was to basically create a
+user called RackWare. For example, I have the username here.
+
+11
+00:01:20,929 --> 00:01:26,574
+So, I do have this user created, and why do we need this user?
+
+12
+00:01:26,574 --> 00:01:32,857
+So, RackWare needs sudo privileges
+in order to perform the migration.
+
+13
+00:01:32,857 --> 00:01:37,409
+So, this user RackWare here, which I have created.
+
+14
+00:01:37,539 --> 00:01:47,718
+Has already, sudo privileges. So, as you can see, I have
+already configured this user, which is called RackWare.
+
+15
+00:01:48,159 --> 00:01:53,208
+With access to the sudoers file.
+
+16
+00:01:53,429 --> 00:01:56,065
+So basically, it's saying, okay,
+
+17
+00:01:56,065 --> 00:02:05,539
+the user RackWare can perform sudo commands and see everything
+that this machine has in order to start a migration.
+
+18
+00:02:05,729 --> 00:02:12,629
+So that's one of the first steps we need
+to perform. It's to create this user.
+
+19
+00:02:12,769 --> 00:02:16,138
+Doesn't… does it need to be the…
+
+20
+00:02:16,299 --> 00:02:23,689
+RackWare called the user? Of course not. Any user that
+has sudo privileges can be used. If you want to use root.
+
+21
+00:02:23,829 --> 00:02:32,478
+Up to you. Most of the IT guys or the security guys won't
+allow it, so that's why we recommend creating a new user.
+
+22
+00:02:33,329 --> 00:02:41,838
+And then, as soon as we have this user, configured as a
+sudoer, in the sudoers file, we are, we are good to go.
+
+23
+00:02:42,199 --> 00:02:53,299
+So, what we need to do next, is basically establish the SSH
+connection. So, remember when I said we need to have the.
+
+24
+00:02:54,069 --> 00:02:58,448
+A simply SSH connection between the RackWare instance.
+
+25
+00:02:58,579 --> 00:03:06,389
+To the… to the Windows or Linux hosts. So,
+what we need to do here Is basically to get.
+
+26
+00:03:06,539 --> 00:03:17,559
+The RackWare public key, okay, which I'm gonna show you
+here. Let me change this, particular… SSH connection.
+
+27
+00:03:18,089 --> 00:03:25,719
+So here, I'm connected on my RackWare
+instance in OCI, so let me show you here.
+
+28
+00:03:26,139 --> 00:03:36,319
+Instances. So, this is an instance, the RackWare 7.7,
+so I'm running this… this instance in Oracle Cloud.
+
+29
+00:03:36,589 --> 00:03:46,488
+So, what I'm gonna do, I need to get the… the
+root public key from this RackWare instance, so…
+
+30
+00:03:47,139 --> 00:03:55,898
+The public key is here, under the root folder,
+so we need, for example, the public key.
+
+31
+00:03:56,039 --> 00:03:57,599
+id_rsa.pub.
+
+32
+00:03:57,869 --> 00:04:04,499
+So, this is the particular key I'm
+interested in. So, this key is the one I need
+
+33
+00:04:04,839 --> 00:04:07,539
+To configure in the source host.
+
+34
+00:04:08,179 --> 00:04:12,459
+In order to establish this SSH connection.
+
+35
+00:04:12,589 --> 00:04:15,778
+So, here is the RackWare.
+
+36
+00:04:15,909 --> 00:04:19,898
+Instance, and this is my source host.
+
+37
+00:04:20,239 --> 00:04:27,718
+So, let me see where I'm at. Okay, I need to change to the.ssh.
+
+38
+00:04:28,659 --> 00:04:31,869
+And here, I have the authorized keys.
+
+39
+00:04:32,019 --> 00:04:32,929
+File.
+
+40
+00:04:33,679 --> 00:04:41,081
+So, as you can see, this particular key, right, from
+the RackWare source, from the RackWare instance,
+
+41
+00:04:41,081 --> 00:04:43,499
+or the RackWare appliance itself.
+
+42
+00:04:43,879 --> 00:04:48,218
+It's already added, because I did this beforehand.
+
+43
+00:04:48,439 --> 00:04:58,148
+So, we do have the public key from the RackWare
+instance already set up in the source host.
+
+44
+00:04:58,689 --> 00:05:06,429
+So, what that means is that basically RackWare
+can already establish an SSH connection.
+
+45
+00:05:06,549 --> 00:05:15,164
+To this Linux VM, which is running here in Oracle,
+sorry, in the Google Cloud. So this is the VM,
+
+46
+00:05:15,164 --> 00:05:25,199
+I call this Rocky Linux Google Source, and I'm gonna copy
+here, just give me a second, let me just shut this off.
+
+47
+00:05:25,739 --> 00:05:29,118
+I'm gonna copy the IP here.
+
+48
+00:05:29,989 --> 00:05:37,475
+And I'm gonna do a simple SSH connection.
+I'm here as a root, so I'm gonna do SSH.
+
+49
+00:05:37,475 --> 00:05:46,878
+I'm gonna connect as the user RackWare, which is the
+user I have created on this source host, remember?
+
+50
+00:05:47,019 --> 00:05:49,428
+And the IP, which is this one.
+
+51
+00:05:50,409 --> 00:05:59,889
+So, as you can see, RackWare can already establish
+an SSH connection to the source host. Simple as that.
+
+52
+00:05:59,889 --> 00:06:03,079
+So, I'm here in… let me change the…
+
+53
+00:06:04,509 --> 00:06:09,108
+Just to show you, I'm connected to the same host. So…
+
+54
+00:06:09,279 --> 00:06:16,229
+This is the source via SSH itself, so here
+I'm connected via RackWare using the SSH.
+
+55
+00:06:16,229 --> 00:06:22,268
+As you can see, it is the same files,
+so basically I'm connected already.
+
+56
+00:06:22,449 --> 00:06:24,578
+To the source host.
+
+57
+00:06:24,809 --> 00:06:26,479
+So, this is the first step.
+
+58
+00:06:26,739 --> 00:06:36,589
+So, as, for the migration, that's basically everything
+we need to establish in order to start a migration.
+
+59
+00:06:36,879 --> 00:06:45,068
+So, we do have other requirements. For
+example, the source host We do recommend that
+
+60
+00:06:45,659 --> 00:06:52,639
+The hosts are configured with Logical Volume Manager. So… to us.
+
+61
+00:06:53,009 --> 00:07:00,598
+To be able to take snapshots. And
+guarantee the integrity of the data.
+
+62
+00:07:00,719 --> 00:07:09,578
+So, as you can see, this particular host is not configured
+as LVM. It's just configured as a standard device.
+
+63
+00:07:09,709 --> 00:07:12,322
+So, RackWare also supports it.
+
+64
+00:07:12,322 --> 00:07:20,249
+We're gonna enable a particular flag, in
+RackWare, which is, allow direct file system copy.
+
+65
+00:07:20,649 --> 00:07:27,425
+So, doing so, RackWare can copy and access the
+file system directly to perform migrations.
+
+66
+00:07:27,425 --> 00:07:34,729
+So, it's good to show you this, that even being
+a requirement for migrations, we do support this.
+
+67
+00:07:34,799 --> 00:07:40,097
+But for disaster recover, guys, it is a mandatory requirement.
+
+68
+00:07:40,097 --> 00:07:49,838
+So, we cannot guarantee data integrity without the source
+Linux host being configured as a logical volume manager.
+
+69
+00:07:50,849 --> 00:07:52,778
+Windows, it's a different thing.
+
+70
+00:07:52,929 --> 00:08:02,688
+Because, we… we rely on, volume shadow copy on Windows.
+That's by default, I believe, since Windows 2012.
+
+71
+00:08:03,929 --> 00:08:12,339
+Okay, so for now, as you can see, we didn't… we
+haven't touched the GUI yet, the RackWare GUI.
+
+72
+00:08:12,679 --> 00:08:18,165
+The only thing we need was, okay, the
+RackWare server itself, which is this one,
+
+73
+00:08:18,165 --> 00:08:22,279
+can establish an SSH to the source host we're gonna migrate.
+
+74
+00:08:22,719 --> 00:08:27,329
+So, if you ask me, Rodolfo, I need to migrate 50
+
+75
+00:08:27,479 --> 00:08:35,099
+Hosts, do I need to do this to 50 hosts? Yes.
+Okay, so RackWare must connect to every single
+
+76
+00:08:35,249 --> 00:08:42,183
+VM, or every single operating system,
+you can… you must… you need to migrate.
+
+77
+00:08:42,183 --> 00:08:51,009
+So, of course, you can use softwares to do that,
+scripts to use, already, use system to go connect
+
+78
+00:08:51,169 --> 00:08:58,890
+We're already using system to create a user, give the
+privileges, and then RackWare can use that particular user.
+
+79
+00:08:58,890 --> 00:09:01,896
+So there are ways to automate this. But yes,
+
+80
+00:09:01,896 --> 00:09:09,750
+the RackWare instance must connect to every single VM or
+operating system you want to migrate or do disaster recovery.
+

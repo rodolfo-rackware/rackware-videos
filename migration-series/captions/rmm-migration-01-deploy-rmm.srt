@@ -1,0 +1,156 @@
+1
+00:00:05,750 --> 00:00:12,399
+But before that, I'm gonna show you how you can
+deploy RackWare, for example, from OCI itself.
+
+2
+00:00:12,819 --> 00:00:19,669
+So, if you go to the marketplace, we
+have here many different listings. So…
+
+3
+00:00:20,269 --> 00:00:28,961
+We have the RackWare bring your own license, image
+or instance, which you can deploy it from here.
+
+4
+00:00:28,961 --> 00:00:35,169
+You can get app and then start the
+deployment in your own OCI tenancy.
+
+5
+00:00:35,399 --> 00:00:42,389
+So, it is, like, a pre-built instance
+with our latest version, with the 7.7.
+
+6
+00:00:42,699 --> 00:00:44,829
+Already there.
+
+7
+00:00:45,219 --> 00:00:52,792
+And this version here, the bring your own license,
+usually is when you purchase license directly from us,
+
+8
+00:00:52,792 --> 00:01:00,149
+or when you want to do proof of concept. There is
+no license associated with this particular instance.
+
+9
+00:01:00,149 --> 00:01:06,318
+You deploy it, you need to reach out to us to give
+you licenses, or you need to buy licenses from us.
+
+10
+00:01:06,819 --> 00:01:12,579
+We do also have, different listings
+here, which is the paid listings.
+
+11
+00:01:12,869 --> 00:01:14,959
+Which is the migration.
+
+12
+00:01:15,019 --> 00:01:20,009
+Listing, and also the disaster recover, listings.
+
+13
+00:01:20,049 --> 00:01:27,224
+So these ones, they are called paid listings,
+because you pay by the hour on these two ones.
+
+14
+00:01:27,224 --> 00:01:35,646
+Once you deploy these particular images here, which is
+basically the same thing as the Bring Your O license,
+
+15
+00:01:35,646 --> 00:01:39,389
+the only difference between them is the pricing.
+
+16
+00:01:39,389 --> 00:01:44,414
+And how they are charged. So the price is per OCPU per hour.
+
+17
+00:01:44,414 --> 00:01:53,209
+There is a few things here you need to consider, the
+amount of hosts you want to sync, I want to migrate.
+
+18
+00:01:53,359 --> 00:02:01,971
+But this is… these ones here, if you need to use,
+to migrate to OCI, you can use these two listings,
+
+19
+00:02:01,971 --> 00:02:08,000
+and they are the paid listings. So
+this is one way to deploy RackWare.
+
+20
+00:02:08,000 --> 00:02:12,478
+So, you can use the OCI instance, that is pre-built.
+
+21
+00:02:12,669 --> 00:02:18,520
+Of course, in Google Cloud here,
+we also have RackWare as a listing.
+
+22
+00:02:18,520 --> 00:02:22,908
+I can show you here next, so let me duplicate this.
+
+23
+00:02:23,219 --> 00:02:33,017
+But remember, as I said, RackWare is just a software.
+Rodolfo, how about, I want to migrate instances to Proxmox?
+
+24
+00:02:33,017 --> 00:02:35,879
+Okay, there is no problem at all.
+
+25
+00:02:36,129 --> 00:02:41,834
+What you need is basically to follow,
+an installation guide we have. We can…
+
+26
+00:02:41,834 --> 00:02:45,888
+I can share this to you, but just to give you an idea.
+
+27
+00:02:46,218 --> 00:02:54,679
+It's just basically deploying a simple Linux instance.
+It can be a Rocky Linux, Oracle Linux, Red Hat version 8.
+
+28
+00:02:55,209 --> 00:02:58,399
+The minimum requirements are these ones.
+
+29
+00:02:58,489 --> 00:03:03,388
+And basically, you need to get the software from our FTP.
+
+30
+00:03:03,429 --> 00:03:10,525
+So, don't be afraid if we don't find an image in a
+particular marketplace, or in a particular system,
+
+31
+00:03:10,525 --> 00:03:14,529
+if you're using Nutanix, if you are using whatever it is.
+
+32
+00:03:14,529 --> 00:03:19,798
+If it can run a Linux instance, you
+can deploy the RackWare software on it.
+
+33
+00:03:19,798 --> 00:03:22,889
+So, I can share this more information later.
+
+34
+00:03:23,079 --> 00:03:26,750
+And you can deploy it anywhere, basically.
+

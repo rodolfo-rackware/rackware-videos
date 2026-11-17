@@ -1,0 +1,440 @@
+1
+00:00:05,750 --> 00:00:12,889
+Let's switch to the RackWare dashboard itself.
+
+2
+00:00:13,289 --> 00:00:14,950
+So let me refresh this.
+
+3
+00:00:14,950 --> 00:00:15,599
+Okay.
+
+4
+00:00:16,909 --> 00:00:18,768
+Next thing we need to do.
+
+5
+00:00:19,259 --> 00:00:26,378
+Is actually tell RackWare what are the
+hosts we are planning to migrate. So…
+
+6
+00:00:26,779 --> 00:00:34,778
+We just established a simple SSH connection, it doesn't
+mean RackWare knows we want to migrate those hosts.
+
+7
+00:00:35,289 --> 00:00:41,162
+So, what we need to do here, it's… as
+you can see, this is, the dashboard.
+
+8
+00:00:41,162 --> 00:00:49,178
+I'm using the latest version possible, the 7.7.5.18.
+We released these a couple, I think 2 weeks ago.
+
+9
+00:00:50,299 --> 00:00:53,238
+And, it's a blank.
+
+10
+00:00:53,419 --> 00:00:58,528
+Configuration. Actually, there is just one
+configuration I did, just to speed up things.
+
+11
+00:00:58,869 --> 00:01:00,299
+I will show you next.
+
+12
+00:01:00,729 --> 00:01:10,549
+So, for those who used RackWare
+before, either the version 7.4 or 7.6,
+
+13
+00:01:10,679 --> 00:01:18,358
+You might know that RackWare assessment
+was only part of the version 7.6.
+
+14
+00:01:18,539 --> 00:01:26,868
+So, RackWare assessment is now part of the 7.7 in the
+same system, so we have migration, DR, and assessment.
+
+15
+00:01:27,279 --> 00:01:29,699
+In the same, host.
+
+16
+00:01:30,159 --> 00:01:35,027
+So, the assessment will help us to guide the migration,
+
+17
+00:01:35,027 --> 00:01:40,958
+or we can use this to gather
+information to plan for the migration.
+
+18
+00:01:41,079 --> 00:01:44,508
+So, I'm gonna show you here how we do this.
+
+19
+00:01:44,939 --> 00:01:51,138
+Now, so, because the first thing we need
+to do is to add the host we want to assess.
+
+20
+00:01:51,409 --> 00:01:56,788
+So what we do here, we… we can come and say, look, I want to add
+
+21
+00:01:57,219 --> 00:01:59,069
+The… the source host?
+
+22
+00:01:59,719 --> 00:02:07,348
+We can do it basically two ways. One is to
+add the host manually from here. One to one.
+
+23
+00:02:07,559 --> 00:02:12,349
+Or, we can basically download template.
+
+24
+00:02:13,169 --> 00:02:14,999
+Which we have…
+
+25
+00:02:15,279 --> 00:02:23,579
+Very different ones here. Because every single
+target cloud has different parameters we need to use.
+
+26
+00:02:23,579 --> 00:02:33,289
+That's why here we have these different templates, one
+specifically to AWS, Google Cloud, Oracle, OLVM, etc, vCenter.
+
+27
+00:02:33,389 --> 00:02:36,318
+Because each one has different parameters.
+
+28
+00:02:36,439 --> 00:02:41,029
+I'm just gonna use here, for example,
+this generic template, just to show you.
+
+29
+00:02:41,469 --> 00:02:45,858
+So, here is an example, of a file
+
+30
+00:02:46,109 --> 00:02:52,789
+That you can create beforehand with all your 50, 60, 200 hosts.
+
+31
+00:02:53,909 --> 00:03:01,478
+Pass all the IPs, what's the username you're
+gonna use, if you have a password to it or not.
+
+32
+00:03:01,709 --> 00:03:09,513
+What is the… the… what's the name of it? The cloud user
+are we gonna use? What's the type of synchronization?
+
+33
+00:03:09,513 --> 00:03:15,598
+What's the target cloud? What's the sync
+type if we're gonna… if we are talking about
+
+34
+00:03:15,979 --> 00:03:23,654
+DR, for example. So, this is called the bulk
+discovery. So, you can plan these beforehand.
+
+35
+00:03:23,654 --> 00:03:27,833
+basically putting every single one of your hosts.
+
+36
+00:03:27,833 --> 00:03:34,059
+For example, I can easily put here
+the two hosts, we did configure there.
+
+37
+00:03:34,319 --> 00:03:43,298
+And basically, RackWare is gonna import them, in the system
+and start assessing, and then we can do the migration.
+
+38
+00:03:43,729 --> 00:03:50,049
+I'm gonna do this manually, just to show you
+the steps, because you can see it easier.
+
+39
+00:03:50,049 --> 00:03:54,018
+But just to show you here, this is how you do the bulk
+
+40
+00:03:54,319 --> 00:03:57,159
+A bulk import, or bulk discovery.
+
+41
+00:03:58,619 --> 00:04:09,379
+So, let's add our first host. We need to give
+RackWare a name for this host, so usually I call this
+
+42
+00:04:09,619 --> 00:04:14,928
+The GCP Rocky Linux source, just
+to identify this is my source host.
+
+43
+00:04:15,589 --> 00:04:26,298
+We need to use the IP address, which the IP address
+of this machine is this one, is the.22. Here we go.
+
+44
+00:04:27,819 --> 00:04:32,579
+This is the IP address. It's a Linux host.
+
+45
+00:04:32,799 --> 00:04:35,559
+SSH port 22.
+
+46
+00:04:35,769 --> 00:04:43,723
+The username, if you recall, the username we
+established the connection was the RackWare user.
+
+47
+00:04:43,723 --> 00:04:51,169
+Which is, yeah, it's not here, but it's the
+RackWare user, where we are at. There we go.
+
+48
+00:04:52,039 --> 00:04:56,208
+Because we have already configured
+this user there, we know it works.
+
+49
+00:04:56,629 --> 00:05:07,158
+And here, we have a few options to configure. So, I'll show
+you this next, because I'm gonna add the two hosts first.
+
+50
+00:05:07,249 --> 00:05:15,657
+But here, RackWare has the ability to auto-provision
+the target, which means I can tell RackWare, look,
+
+51
+00:05:15,657 --> 00:05:17,208
+based on the cloud.
+
+52
+00:05:17,579 --> 00:05:25,778
+He already has, configured, can be, in our lab here,
+I'm gonna do an auto-provision to Oracle Cloud.
+
+53
+00:05:25,919 --> 00:05:29,348
+Which, by the way, is already configured, I'll show you next.
+
+54
+00:05:29,609 --> 00:05:36,079
+I also have the ability to use, for example,
+an existing host into the destination.
+
+55
+00:05:36,369 --> 00:05:37,829
+So, why…
+
+56
+00:05:37,989 --> 00:05:48,189
+Is this here. So remember, RackWare can migrate workloads
+to any… from any system to any other system. So.
+
+57
+00:05:48,349 --> 00:05:54,449
+For example, if we are doing a migration
+from one virtual machine that's running.
+
+58
+00:05:54,729 --> 00:05:56,458
+In VMware, for example.
+
+59
+00:05:56,679 --> 00:06:05,102
+Our customer wants to migrate this virtual machine to a
+physical host in his, below his desk, or whatever he wants,
+
+60
+00:06:05,102 --> 00:06:12,279
+because he wants now a physical host of this
+particular VM. We are doing virtual to physical here.
+
+61
+00:06:12,549 --> 00:06:15,778
+So, the way to tell RackWare is, okay.
+
+62
+00:06:15,909 --> 00:06:22,628
+Where is this physical host. We cannot
+auto-provision a physical infrastructure.
+
+63
+00:06:22,779 --> 00:06:28,109
+So, we're gonna set this as an existing
+target. And we're gonna say, look.
+
+64
+00:06:28,329 --> 00:06:35,868
+I'm gonna add this as a target next. I'm gonna tell RackWare,
+here's the IP address of this particular physical host.
+
+65
+00:06:36,029 --> 00:06:41,708
+And here is the username, which I have
+already configured on that particular VM.
+
+66
+00:06:41,869 --> 00:06:45,120
+And the SSH connection is already working.
+
+67
+00:06:45,120 --> 00:06:51,469
+So basically, once you tell RackWare where
+is the target host, we can do the rest.
+
+68
+00:06:51,469 --> 00:06:56,578
+We can format the target host and configure everything from there.
+
+69
+00:06:57,689 --> 00:07:04,589
+So, I'm gonna use here the
+auto-provision. I'm gonna set this to OCI.
+
+70
+00:07:04,989 --> 00:07:07,549
+Because I already provisioned this.
+
+71
+00:07:07,849 --> 00:07:13,525
+I'm gonna give this a name, which is
+gonna be created in the Oracle Cloud.
+
+72
+00:07:13,525 --> 00:07:22,268
+I'm gonna use this, for example, Rocky Linux from Google
+Cloud. This is gonna be my instance name in Oracle Cloud.
+
+73
+00:07:22,759 --> 00:07:29,498
+The provision type, I'm gonna do pre-provision,
+because I want RackWare to deploy
+
+74
+00:07:29,669 --> 00:07:35,688
+This particular VM, as soon as I do my first synchronization.
+
+75
+00:07:35,889 --> 00:07:39,629
+So, I'm gonna pre-provision in the first sync.
+
+76
+00:07:39,879 --> 00:07:42,919
+And the sync type is gonna be direct sync.
+
+77
+00:07:43,079 --> 00:07:52,620
+Direct sync means I'm gonna sync directly to the VM, or to
+the instance, I have already deployed, which is this one,
+
+78
+00:07:52,620 --> 00:07:54,429
+the pre-provision one.
+
+79
+00:07:54,689 --> 00:08:03,738
+So… Once I hit add, RackWare is gonna go
+and connect to this particular Linux system.
+
+80
+00:08:04,409 --> 00:08:08,548
+Verify if everything is in place, and…
+
+81
+00:08:08,749 --> 00:08:13,989
+Put the host in the system and start the assessment.
+
+82
+00:08:14,319 --> 00:08:16,479
+So, let it run.
+
+83
+00:08:16,919 --> 00:08:23,089
+It's gonna take a few seconds, and I'm gonna show
+you next how we do this for the Windows host.
+
+84
+00:08:26,929 --> 00:08:27,929
+Okay.
+
+85
+00:08:28,049 --> 00:08:30,198
+We have added our first.
+
+86
+00:08:31,539 --> 00:08:36,069
+Linux system. It's here, so it's already discovered.
+
+87
+00:08:36,219 --> 00:08:38,439
+Let's do this…
+
+88
+00:08:38,769 --> 00:08:46,958
+To the Windows host. I'm gonna do this, friendly
+name. I'm gonna use, for example, Windows… oops.
+
+89
+00:08:48,029 --> 00:08:52,289
+Windows from GCP. Easy like that.
+
+90
+00:08:52,399 --> 00:08:58,628
+It is a Windows. The IP from this host is this one.
+
+91
+00:08:59,769 --> 00:09:07,040
+There's the IP address, the SSH port is 22. As
+you can see, the user was there already, system.
+
+92
+00:09:07,040 --> 00:09:09,949
+I'm just gonna make sure it is system.
+
+93
+00:09:10,449 --> 00:09:20,298
+And I'm gonna do the same. I'm gonna auto-provision this
+to Oracle Cloud. This… the name is gonna be Windows…
+
+94
+00:09:22,779 --> 00:09:28,939
+From GCP, and this is the source.
+
+95
+00:09:31,009 --> 00:09:36,968
+Provision type, it's gonna be pre-provision,
+and it's gonna be also direct.
+
+96
+00:09:39,400 --> 00:09:39,919
+Yeah.
+
+97
+00:09:40,069 --> 00:09:48,200
+It was done… added successfully, as you can see here.
+We have a Windows, Windows here, and a Linux VM.
+

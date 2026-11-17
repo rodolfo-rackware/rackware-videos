@@ -1,0 +1,376 @@
+1
+00:00:05,750 --> 00:00:14,648
+As you can see here, RackWare is already displaying,
+assessment data, right, from the source host.
+
+2
+00:00:14,799 --> 00:00:20,529
+So, we know it's a Rocky Linux, we
+know it's a Windows Server 2022.
+
+3
+00:00:20,739 --> 00:00:23,669
+So, if we go here into the assessment.
+
+4
+00:00:24,189 --> 00:00:30,688
+We have a lot of data already from this particular, two hosts.
+
+5
+00:00:30,969 --> 00:00:38,179
+So, if I click on the host itself, now
+RackWare is going to display me a lot of data
+
+6
+00:00:38,549 --> 00:00:46,318
+From this particular, host. So, I have here, for example, the full
+
+7
+00:00:46,769 --> 00:00:53,668
+File system, I can see it every single
+file system, use data, not use data.
+
+8
+00:00:53,869 --> 00:00:57,358
+IP addresses, MAC addresses.
+
+9
+00:00:57,509 --> 00:00:59,538
+You know, everything is from here.
+
+10
+00:01:00,259 --> 00:01:10,298
+The size of the VM itself, number of CPU, cores,
+memory, total used data in the file system.
+
+11
+00:01:11,319 --> 00:01:21,763
+And, I can have more if I enabled, the host analysis,
+which is the monitoring enable and analysis enable,
+
+12
+00:01:21,763 --> 00:01:24,449
+which I'm gonna enable now.
+
+13
+00:01:24,919 --> 00:01:31,430
+So, this is gonna enable, basically, the
+assessment portion for these two hosts.
+
+14
+00:01:31,430 --> 00:01:34,848
+So, let me enable this also for the Linux.
+
+15
+00:01:35,299 --> 00:01:36,979
+Sorry for the Windows host.
+
+16
+00:01:37,169 --> 00:01:41,979
+Configuration, but enable the monitoring and analysis.
+
+17
+00:01:42,679 --> 00:01:50,338
+So, now RackWare is gonna go and pull
+more information from these two hosts.
+
+18
+00:01:50,850 --> 00:01:59,396
+Once we enabled the assessment piece for every single
+host, because for… by default, it's not enabled.
+
+19
+00:01:59,396 --> 00:02:01,348
+We need to enable this.
+
+20
+00:02:01,819 --> 00:02:07,738
+We're gonna be able to see more data, for this host. For example.
+
+21
+00:02:08,039 --> 00:02:15,142
+We have this, we can collect every single
+application installed inside of this virtual machine,
+
+22
+00:02:15,142 --> 00:02:19,479
+in this operating system, in this case is the Rocky Linux.
+
+23
+00:02:19,979 --> 00:02:25,679
+And one of the most interesting parts is
+the monitoring part, which is the analysis.
+
+24
+00:02:26,079 --> 00:02:35,078
+So, RackWare can monitor, for example, the consumption,
+CPU, memory, network, bandwidth, disk IOPS, etc.
+
+25
+00:02:36,039 --> 00:02:42,062
+And this can, you can let this run for
+a couple of days, a couple of weeks.
+
+26
+00:02:42,062 --> 00:02:46,398
+This is very helpful when you're planning a migration.
+
+27
+00:02:46,609 --> 00:02:54,908
+And the customer doesn't know exactly, look, I don't know
+if my machine is using 100% of the resources, if not.
+
+28
+00:02:54,919 --> 00:03:02,916
+So, you can monitor the VM, and you can know exactly
+what's the peak utilization in CPU, in memory, etc.
+
+29
+00:03:02,916 --> 00:03:09,528
+So, this data can be used for you to plan
+your migration accordingly. Say, look, okay.
+
+30
+00:03:09,639 --> 00:03:14,948
+If I need to migrate this VM, it's
+already using 100% of CPU in VMware.
+
+31
+00:03:15,109 --> 00:03:23,989
+When I migrate to OCI, I need a bigger VM. I need
+a bigger shape, I need more CPU, memory, and disk.
+
+32
+00:03:24,219 --> 00:03:33,478
+So you can reshape your host. So this is very important
+information you can use when you're planning your migration.
+
+33
+00:03:33,949 --> 00:03:37,577
+The other very important thing is dependencies.
+
+34
+00:03:37,577 --> 00:03:43,599
+So, as RackWare connects into the file
+system itself, or the operating system.
+
+35
+00:03:43,639 --> 00:03:52,802
+We can see the TCP/IP stack. So, we know everything
+that is connecting to this VM and to this VM.
+
+36
+00:03:52,802 --> 00:03:57,808
+So, as you can see, I have different stuff, you know.
+
+37
+00:03:58,179 --> 00:04:02,868
+Coming in and out of these hosts. I know exactly
+
+38
+00:04:03,229 --> 00:04:07,758
+What's my IP and what is connecting from internal to external?
+
+39
+00:04:07,889 --> 00:04:13,499
+So, with this data, you can discover more
+hosts in your customer premises, for example.
+
+40
+00:04:13,499 --> 00:04:16,594
+Let's say you are doing a migration from VMware.
+
+41
+00:04:16,594 --> 00:04:24,139
+Customer doesn't know all the hosts that connects to this
+database server. It's a common thing. They have a database.
+
+42
+00:04:24,279 --> 00:04:27,978
+But I think only two application servers connect to them.
+
+43
+00:04:28,249 --> 00:04:34,270
+Well, if you let the monitoring run for a
+couple of days, sometimes, like, a week or two,
+
+44
+00:04:34,270 --> 00:04:36,908
+because they might have seasonal stuff.
+
+45
+00:04:37,709 --> 00:04:45,338
+We can discover that they have more IPs connecting, and we
+need to investigate what are those IPs, and perhaps connect
+
+46
+00:04:45,779 --> 00:04:53,799
+This particular host into RackWare and let them
+be analyzed. Then you can perform your migrations.
+
+47
+00:04:53,929 --> 00:05:03,079
+So this tool here, guys, is part, of the migration. You
+don't need to pay any extra if you have any particular
+
+48
+00:05:03,339 --> 00:05:10,358
+Licenses, and in fact, the assessment itself,
+assessment only, is free of charge for now.
+
+49
+00:05:10,358 --> 00:05:18,008
+You can use it to discover your hosts and
+applications, to monitor, to see the dependencies, etc.
+
+50
+00:05:18,809 --> 00:05:25,373
+But of course, there is more. In… let me show
+you the Windows. Windows has more data to see.
+
+51
+00:05:25,373 --> 00:05:32,079
+For example, see the dependencies on this Windows
+host. There is more connections, Windows do…
+
+52
+00:05:32,079 --> 00:05:37,858
+we have the Windows agent from Google
+Cloud, so there is more connections coming.
+
+53
+00:05:37,989 --> 00:05:39,229
+In and out.
+
+54
+00:05:39,339 --> 00:05:44,894
+We have the analysis, of course,
+Windows uses way more CPU and memory.
+
+55
+00:05:44,894 --> 00:05:50,608
+We have the applications, so I think
+we don't have any installed so far.
+
+56
+00:05:52,239 --> 00:05:59,559
+And then you can use this, but there is a very
+good thing here you can do, is the cost estimation.
+
+57
+00:05:59,789 --> 00:06:05,897
+When you have, for example, a particular
+target environment or cloud environment,
+
+58
+00:06:05,897 --> 00:06:11,929
+we can do cost comparison to show you
+different pricing, if it's cheaper or not.
+
+59
+00:06:12,309 --> 00:06:14,959
+But also, we do have this host report.
+
+60
+00:06:15,529 --> 00:06:18,939
+Which, for example, I'm gonna generate one here.
+
+61
+00:06:19,349 --> 00:06:27,691
+This brings you… this gives you, an Excel report with
+all this data, which you can analyze in other tool,
+
+62
+00:06:27,691 --> 00:06:30,789
+or just to check in a different format.
+
+63
+00:06:30,929 --> 00:06:39,725
+So, it contains way more data of the hosts itself.
+So, for example, this is the report we generate.
+
+64
+00:06:39,725 --> 00:06:42,834
+This is the two hosts I have added.
+
+65
+00:06:42,834 --> 00:06:50,919
+So, we show you, the file systems, the size of
+it, the used, the free space, the use ratio.
+
+66
+00:06:51,019 --> 00:06:57,759
+If they have remote mount points, the NIC part, IPs, MAC, DNS.
+
+67
+00:06:57,989 --> 00:07:06,934
+So there is a lot of data, here is the table of the
+connections from the source IP, that is the machine itself,
+
+68
+00:07:06,934 --> 00:07:11,689
+to which IP is connected. So this is a very important data.
+
+69
+00:07:11,959 --> 00:07:13,359
+You can use
+
+70
+00:07:13,489 --> 00:07:21,826
+To plan your migrations. To show the customer, look, dear
+customer, here is how your hosts are connecting together.
+
+71
+00:07:21,826 --> 00:07:30,308
+This is the data you have running inside of every single
+host. Because we can see databases, we can see applications.
+
+72
+00:07:30,308 --> 00:07:30,598
+Even
+
+73
+00:07:30,939 --> 00:07:36,368
+The CPU, memory, utilization, and so on and so forth.
+
+74
+00:07:36,539 --> 00:07:42,568
+So, this is just, of course, a very
+high-level overview on the assessment.
+
+75
+00:07:42,829 --> 00:07:44,709
+Which you can extract.
+
+76
+00:07:44,939 --> 00:07:50,769
+We can do more, for example, if you have
+hundreds of hosts already added here.
+
+77
+00:07:51,129 --> 00:07:54,259
+You can simply, for example, do a Plan Wave.
+
+78
+00:07:54,659 --> 00:08:03,468
+And RackWare can say, look, we have here, we know
+the connections between these two or three hosts.
+
+79
+00:08:03,639 --> 00:08:06,719
+We recommend you to migrate them together.
+
+80
+00:08:06,809 --> 00:08:13,915
+Why? Because per their connections, looks like
+there are a database and two application servers.
+
+81
+00:08:13,915 --> 00:08:21,169
+There are a lot of, connections, flowing between
+them, so that's why we recommend you planning in…
+
+82
+00:08:21,169 --> 00:08:23,750
+you migrate these two hosts together.
+

@@ -1,0 +1,593 @@
+1
+00:00:05,750 --> 00:00:13,108
+So, what do we need next? We can create
+a wave. A wave is basically just a group
+
+2
+00:00:13,829 --> 00:00:18,278
+Where we, for example, we… we put
+
+3
+00:00:18,519 --> 00:00:26,019
+Host together, basically by affinity. So, let's say I want
+to migrate a database, and it's two application servers.
+
+4
+00:00:26,169 --> 00:00:35,359
+So I can basically go here and create a wave,
+and say, look, this is the… applic… the app…
+
+5
+00:00:36,129 --> 00:00:37,149
+Of
+
+6
+00:00:37,259 --> 00:00:46,649
+From, I don't know, this is the HR app. So, which
+consists in just one VM. Just the Linux host.
+
+7
+00:00:47,069 --> 00:00:56,254
+So, as you can see here, RackWare is already displaying
+all the hosts I have. I can select them all, or just one.
+
+8
+00:00:56,254 --> 00:01:02,269
+So, I'm just gonna add the Linux host
+here, okay, to this particular wave.
+
+9
+00:01:03,169 --> 00:01:06,494
+And we have this wave now with one host.
+
+10
+00:01:06,494 --> 00:01:14,475
+So, this is the way, for example, we can bundle
+hosts together for them to synchronize together.
+
+11
+00:01:14,475 --> 00:01:22,788
+Because RackWare can do incremental syncs, so nothing
+needs to be stopped on the source environment.
+
+12
+00:01:22,959 --> 00:01:32,612
+So, we keep syncing the hosts, for example, once a day, and
+then when we reach the cutover window in the, for example,
+
+13
+00:01:32,612 --> 00:01:33,839
+in the weekend.
+
+14
+00:01:34,039 --> 00:01:42,028
+We just do the last sync, and the VM is ready to
+replicate in… to start production in the other side.
+
+15
+00:01:42,459 --> 00:01:45,528
+So, I have this wave now, but for example.
+
+16
+00:01:45,979 --> 00:01:52,282
+The system is already telling me, something
+is not right here. Probably I'm missing…
+
+17
+00:01:52,282 --> 00:01:55,209
+oh, look, I'm missing some information.
+
+18
+00:01:55,419 --> 00:01:59,269
+Because as I configured this host.
+
+19
+00:01:59,439 --> 00:02:01,169
+To auto-provision.
+
+20
+00:02:01,299 --> 00:02:08,499
+RackWare is saying, look, in order for you to
+create this instance in… in the OCI, which is you…
+
+21
+00:02:08,499 --> 00:02:12,699
+you configured, we are missing data. This is gonna fail.
+
+22
+00:02:13,099 --> 00:02:18,318
+So, I need to come here and configure this port.
+
+23
+00:02:18,869 --> 00:02:21,608
+Which is basically the auto-provision config.
+
+24
+00:02:21,909 --> 00:02:30,568
+It's basically tell RackWare where in
+OCI I need To create this instance.
+
+25
+00:02:30,739 --> 00:02:38,738
+So, as you can see, I can easily select from here
+what's the region. I want this to be in Phoenix.
+
+26
+00:02:38,939 --> 00:02:45,759
+What is the availability domain? I'm going to
+put in availability 2. What is the fault domain?
+
+27
+00:02:45,759 --> 00:02:47,718
+I'm also going to select 2.
+
+28
+00:02:47,909 --> 00:02:57,230
+What is the VCN name? Look, it's already bringing
+the VCN name I have in my compartment, in my user.
+
+29
+00:02:57,230 --> 00:02:59,188
+I'm gonna use my VCN.
+
+30
+00:02:59,529 --> 00:03:01,119
+What's the subnet?
+
+31
+00:03:01,259 --> 00:03:10,988
+So, I'm gonna use my public subnet, and what's the
+compartment? I'm gonna use my own compartment here in OCI.
+
+32
+00:03:11,579 --> 00:03:19,228
+Why I'm able to see this, all this data?
+Because I have added the cloud user, remember?
+
+33
+00:03:19,339 --> 00:03:27,338
+I did this previously, that's why RackWare is able
+to show you every single data in these dropdowns.
+
+34
+00:03:27,929 --> 00:03:36,109
+So This is pretty much it, for a very
+basic migration, but remember, like I said.
+
+35
+00:03:36,499 --> 00:03:44,469
+If I want to increase the shape or the resources
+of a particular VM, how can I do this from here?
+
+36
+00:03:44,729 --> 00:03:52,605
+Basically, I can select a shape from here,
+if I want, or I can just type the shape name,
+
+37
+00:03:52,605 --> 00:04:00,659
+or just tell RackWare I want X amount of CPUs,
+X amount of memories, I want to provision X
+
+38
+00:04:00,939 --> 00:04:10,198
+Type of disks, provision, disk vCPUs, etc, if I want
+to attach different NICs, or configure different tags,
+
+39
+00:04:10,198 --> 00:04:12,708
+or even use different images.
+
+40
+00:04:12,889 --> 00:04:20,648
+If I want to use a particular image name, for
+example, a dedicated image I have created in OCI,
+
+41
+00:04:20,648 --> 00:04:22,608
+I can specify from here.
+
+42
+00:04:22,749 --> 00:04:27,009
+By default, RackWare is gonna select the right shape.
+
+43
+00:04:27,178 --> 00:04:30,901
+And the right image. Because we know we are gonna…
+
+44
+00:04:30,901 --> 00:04:36,784
+we are migrating a Rocky Linux 9, I can
+simply go there and use the same image.
+
+45
+00:04:36,784 --> 00:04:44,379
+If it's not available, I can use a similar image,
+for example, Ubuntu or a Rocky Linux 8, for example.
+
+46
+00:04:45,478 --> 00:04:48,319
+So, I can simply save this.
+
+47
+00:04:48,489 --> 00:04:49,619
+Let me save.
+
+48
+00:04:51,439 --> 00:04:52,789
+Yeah, done.
+
+49
+00:04:53,209 --> 00:04:59,738
+It's saved, so I have everything
+configured here. If I go back to my wave.
+
+50
+00:05:00,279 --> 00:05:02,018
+Sorry, to my host.
+
+51
+00:05:03,289 --> 00:05:11,259
+You're gonna see there is no more…
+information saying something's wrong.
+
+52
+00:05:11,609 --> 00:05:19,049
+So, I can simply come here and start the
+replication. Because I have everything established.
+
+53
+00:05:19,789 --> 00:05:22,909
+RackWare can connect to the source host.
+
+54
+00:05:23,609 --> 00:05:24,388
+Right?
+
+55
+00:05:24,489 --> 00:05:25,539
+And…
+
+56
+00:05:26,329 --> 00:05:29,617
+Has the ability to auto-provision this target.
+
+57
+00:05:29,617 --> 00:05:35,979
+So from here, we're gonna be able to see,
+right, all the information from this particular
+
+58
+00:05:36,379 --> 00:05:42,351
+Synchronization. Every single step, we're
+gonna be able to see what's happening.
+
+59
+00:05:42,351 --> 00:05:46,308
+RackWare examines the origin, the source environment.
+
+60
+00:05:46,469 --> 00:05:51,699
+And now we are auto-provisioning the host.
+So, if everything is working properly.
+
+61
+00:05:51,989 --> 00:05:53,408
+If I come here.
+
+62
+00:05:53,579 --> 00:05:54,809
+In OCI.
+
+63
+00:05:56,029 --> 00:05:59,579
+I'm gonna see the VM provisioning.
+
+64
+00:05:59,699 --> 00:06:00,449
+Okay.
+
+65
+00:06:00,639 --> 00:06:05,018
+So this is the name I gave in the
+configuration, Rocky Linux from GCP.
+
+66
+00:06:05,219 --> 00:06:06,159
+So…
+
+67
+00:06:06,369 --> 00:06:15,309
+RackWare is already provisioned the VM inside a compartment,
+inside the subnet, inside the VCN, I have specified that.
+
+68
+00:06:16,079 --> 00:06:21,329
+So, the auto-provisioning usually takes, like.
+
+69
+00:06:21,649 --> 00:06:28,888
+3 minutes. While it's doing this, I'm gonna
+do another wave, just to show you the windows.
+
+70
+00:06:29,259 --> 00:06:36,858
+Workflow, which is basically the same. I'm gonna
+use… create one, for example, Windows Wave.
+
+71
+00:06:37,739 --> 00:06:39,889
+Select the Windows host.
+
+72
+00:06:40,239 --> 00:06:41,508
+Click it, add.
+
+73
+00:06:41,929 --> 00:06:43,699
+I'm gonna add a new wave…
+
+74
+00:06:45,379 --> 00:06:48,469
+And here is the… the windows.
+
+75
+00:06:48,769 --> 00:06:49,729
+Host?
+
+76
+00:06:50,219 --> 00:06:53,319
+Same problem, I need to specify this.
+
+77
+00:06:53,809 --> 00:06:57,178
+In the, in the auto-provision config.
+
+78
+00:06:57,719 --> 00:07:03,449
+So… Why this auto-provision config is for host?
+
+79
+00:07:03,569 --> 00:07:11,189
+Because you can put different hosts in different
+compartments, in different subnets. So…
+
+80
+00:07:11,769 --> 00:07:14,174
+Until the version 7.4, we…
+
+81
+00:07:14,174 --> 00:07:24,629
+we put this in the same wave, but we had to overwrite
+configurations, so now everything is under the host itself.
+
+82
+00:07:24,629 --> 00:07:31,802
+So in the same wave, you can have, like, 10, 20, 30
+hosts, each one going to a different compartment,
+
+83
+00:07:31,802 --> 00:07:39,118
+a different subnet, using different images, using
+different configurations. This is now a configuration
+
+84
+00:07:39,239 --> 00:07:41,169
+For the host.
+
+85
+00:07:41,299 --> 00:07:45,059
+So it's very easy now to configure or change
+
+86
+00:07:45,239 --> 00:07:53,029
+Parameters inside the host here. Let me
+just adjust… the parameters… Fault domain 2.
+
+87
+00:07:53,769 --> 00:07:58,229
+VCN name… subnet…
+
+88
+00:07:59,389 --> 00:08:04,448
+Public… Compartment… I'm gonna use mine.
+
+89
+00:08:04,829 --> 00:08:06,618
+Choose Rodolfo here.
+
+90
+00:08:08,109 --> 00:08:09,989
+Yep, that's pretty much I need.
+
+91
+00:08:10,319 --> 00:08:11,319
+Save.
+
+92
+00:08:12,419 --> 00:08:13,509
+Okay.
+
+93
+00:08:13,789 --> 00:08:19,039
+So my Windows wave is done. So I can simply start this other wave.
+
+94
+00:08:19,039 --> 00:08:24,129
+Of course, you can have multiple waves syncing at the same time.
+
+95
+00:08:24,409 --> 00:08:27,768
+So if I come here, I'm gonna see my two waves running.
+
+96
+00:08:28,199 --> 00:08:37,248
+Here in OCI, I might see the windows popping up in a few minutes.
+
+97
+00:08:38,859 --> 00:08:44,678
+So, yeah, here's the Rocky Linux.
+It's already running. Here's the IPs.
+
+98
+00:08:44,929 --> 00:08:49,688
+So, if I go back to RackWare into my HR application.
+
+99
+00:08:49,789 --> 00:08:52,368
+I'm gonna see more data here, look.
+
+100
+00:08:52,729 --> 00:08:57,519
+It was already provisioned, RackWare is now doing the sync.
+
+101
+00:08:57,519 --> 00:09:04,339
+It's already copying the data over from one
+site to another, from one VM to another.
+
+102
+00:09:05,579 --> 00:09:08,909
+If I see the windows.
+
+103
+00:09:09,649 --> 00:09:13,769
+Let me see if Windows is, yeah, already in auto-provision.
+
+104
+00:09:14,099 --> 00:09:20,148
+If I do a refresh, I'm gonna see also
+the windows being provisioned here.
+
+105
+00:09:20,979 --> 00:09:24,059
+Oh, there we go, Windows from GCP.
+
+106
+00:09:24,450 --> 00:09:35,919
+It automatically takes the IP from The, the
+subnet, or the… the networks being used.
+
+107
+00:09:36,069 --> 00:09:38,373
+In that particular configuration.
+
+108
+00:09:38,373 --> 00:09:44,379
+There are ways, of course, you can specify
+the IPs, for example, if you don't want to.
+
+109
+00:09:45,099 --> 00:09:47,448
+Let me change here.
+
+110
+00:09:47,619 --> 00:09:49,829
+So, if I go to the host…
+
+111
+00:09:56,129 --> 00:09:58,489
+In auto-provision config.
+
+112
+00:09:58,689 --> 00:10:02,699
+C, you have, a lot of data here.
+
+113
+00:10:02,879 --> 00:10:05,989
+If I edit…
+
+114
+00:10:07,439 --> 00:10:15,692
+What I have done. Yeah, here. You have the ability to
+specify manually the private or public IP if you want to. So,
+
+115
+00:10:15,692 --> 00:10:20,931
+by default, RackWare is going to try
+to use DHCP, but if it doesn't have,
+
+116
+00:10:20,931 --> 00:10:24,519
+you must specify here in the private or public IP.
+
+117
+00:10:24,689 --> 00:10:25,409
+Okay.
+
+118
+00:10:25,649 --> 00:10:27,100
+So you can use that.
+
+119
+00:10:27,100 --> 00:10:34,659
+Yes, well, you can have the same IP destination
+in the target. You just need to deploy
+
+120
+00:10:35,449 --> 00:10:39,379
+A NAT, Between the two systems?
+
+121
+00:10:39,879 --> 00:10:44,658
+And you can preserve the IP addresses. So, basically.
+
+122
+00:10:44,919 --> 00:10:52,839
+In this scenario here, you're gonna establish the
+connection, but in the middle, you can configure a NAT.
+
+123
+00:10:52,909 --> 00:10:59,040
+You can use a fake IP for the RackWare to
+use as a source environment, and then in OCI,
+
+124
+00:10:59,040 --> 00:11:03,269
+you're going to replicate the same networks and subnetworks,
+
+125
+00:11:03,269 --> 00:11:07,638
+so RackWare will basically use the same IP in the destination.
+
+126
+00:11:07,739 --> 00:11:12,459
+So, let me open this very quickly.
+
+127
+00:11:14,169 --> 00:11:18,798
+Where… where is it? Information deck… there we go. So, here.
+
+128
+00:11:19,179 --> 00:11:27,302
+We can configure a bridge server with IP NAT and
+establish the same IP between the two systems.
+
+129
+00:11:27,302 --> 00:11:29,269
+This is something we do
+
+130
+00:11:29,369 --> 00:11:34,805
+Quite often. It doesn't need to be
+a bridge server, or a Linux server.
+
+131
+00:11:34,805 --> 00:11:41,018
+If you have a FortiGate, a Fortinet,
+Cisco, everything, you can establish a NAT.
+
+132
+00:11:41,179 --> 00:11:44,039
+You can perform the same IP.
+
+133
+00:11:44,199 --> 00:11:48,381
+But of course, you need to create the
+target format with the same subnet,
+
+134
+00:11:48,381 --> 00:11:52,900
+everything must be in place for RackWare
+to use the same IP. But yes, it's doable.
+
